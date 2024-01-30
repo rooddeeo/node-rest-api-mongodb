@@ -2,11 +2,11 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
-
 import contactsRouter from "./routes/contactsRouter.js";
-/////////////////////////////////
 import dotenv from "dotenv";
-dotenv.config({ path: "./envs/dev.env" });
+
+dotenv.config({ path: "./dev.env" });
+
 mongoose
 	.connect(process.env.MONGO_CONNECT_URL)
 	.then(() => {
@@ -16,7 +16,7 @@ mongoose
 		console.log(error.message);
 		process.exit(1);
 	});
-/////////////////////////////////
+
 const app = express();
 
 app.use(morgan("tiny"));
